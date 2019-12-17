@@ -10,4 +10,8 @@ class Bank_account
     raise "Please enter a valid amount" if amount < 1 
     @balance += amount
   end
+
+  def withdraw(amount)
+    @balance -= amount
+  end
 end
