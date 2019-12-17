@@ -39,5 +39,15 @@ describe 'bank account' do
       subject.deposit(50)
       expect { subject.withdraw(100) }.to raise_error "This withdrawal exceeds your balance. Please enter a valid amount."
     end
+
+    it 'adds an array of the current date, withdrawn amount and current total balance to the array of transaction records' do
+      subject.withdraw(50)
+      expect(subject.transaction_history).to eq [
+        [Time.now.strftime("%d-%m-%Y"), 100, " ", 100], 
+        [Time.now.strftime("%d-%m-%Y"), " ", 100, 0], 
+        [Time.now.strftime("%d-%m-%Y"), 50, " ", 50], 
+        [Time.now.strftime("%d-%m-%Y"), " ", 50, 0]
+      ]
+    end
   end
 end
