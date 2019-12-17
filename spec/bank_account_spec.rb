@@ -14,8 +14,7 @@ describe 'bank account' do
     end
 
     it 'raises an error if the account holder tries to deposit a negative amount' do
-      message = 'Please enter a valid amount'
-      expect { subject.deposit(-100) }.to raise_error message    
+      expect { subject.deposit(-100) }.to raise_error 'Please enter a valid amount.'    
     end
   end
 
@@ -25,6 +24,11 @@ describe 'bank account' do
       subject.deposit(100)
       subject.withdraw(100)
       expect(subject.balance).to eq 0
+    end
+
+    it 'raises an error if the amount to be withdrawn will exceed the account balance' do
+      subject.deposit(50)
+      expect { subject.withdraw(100) }.to raise_error "This withdrawal exceeds your balance. Please enter a valid amount."
     end
   end
 end
