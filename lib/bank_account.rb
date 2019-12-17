@@ -7,6 +7,7 @@ class Bank_account
   end
 
   def deposit(amount) 
+    raise "Please enter a valid amount" if amount < 1 
     @balance += amount
   end
 end

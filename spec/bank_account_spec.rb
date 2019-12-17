@@ -7,10 +7,13 @@ describe 'bank account' do
   end
 
   describe '#deposit' do
-    it 'has a method that takes an amount as an argument, and increases the balance by that amount' do
+    it 'takes an amount as an argument, and increases the balance by that amount' do
       subject.deposit(100)
       expect(subject.balance).to eq 100
     end
-  end
 
+    it 'raises an error if the account holder tries to deposit a negative amount' do
+      message = 'Please enter a valid amount'
+      expect { subject.deposit(-100) }.to raise_error message    end
+  end
 end
