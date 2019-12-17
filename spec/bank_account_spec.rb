@@ -21,6 +21,10 @@ describe 'bank account' do
     it 'raises an error if the account holder tries to deposit a negative amount' do
       expect { subject.deposit(-100) }.to raise_error 'Please enter a valid amount.'    
     end
+
+    it 'adds an array of the current date, deposited amount and current total balance to the array of transaction records' do
+      expect(subject.transaction_history).to eq [[Time.now.strftime("%d-%m-%Y"), 100, " ", 100]]
+    end
   end
 
   describe '#withdraw' do

@@ -10,6 +10,7 @@ class Bank_account
   def deposit(amount) 
     raise "Please enter a valid amount." if amount < 1 
     @balance += amount
+    @transaction_history.push([Time.now.strftime("%d-%m-%Y"), amount, " ", @balance])
   end
 
   def withdraw(amount)
