@@ -6,6 +6,11 @@ describe 'bank account' do
     expect(subject.balance).to eq 0
   end
 
+  it 'initialises with an empty array of transactions' do
+    subject = Bank_account.new
+    expect(subject.transaction_history).to eq []
+  end
+
   describe '#deposit' do
     subject = Bank_account.new
     it 'takes an amount as an argument, and increases the balance by that amount' do
