@@ -18,4 +18,8 @@ class Bank_account
     @balance -= amount
     @transaction_history.push([Time.now.strftime("%d-%m-%Y"), " ", amount, @balance])
   end
+
+  def print_statement
+    
+  end
 end

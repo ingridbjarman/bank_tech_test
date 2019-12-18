@@ -50,4 +50,16 @@ describe 'bank account' do
       ]
     end
   end
+
+  describe '#print_statement' do
+    subject = Bank_account.new
+    it 'prints the full array of transaction records on one line each' do
+      subject.deposit(100)
+      subject.withdraw(50)
+      subject.deposit(100)
+      expect(subject.print_statement).to eq 'Time.now.strftime("%d-%m-%Y"), 100, " ", 100
+      Time.now.strftime("%d-%m-%Y"), " ", 50, 50
+      Time.now.strftime("%d-%m-%Y"), 100, " ", 150'
+    end
+  end
 end
